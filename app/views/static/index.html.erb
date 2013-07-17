@@ -1,0 +1,21 @@
+<div class="jumbotron span7">
+  <% if user_signed_in? %>
+    <h1>Bem vindo, <%= current_user.email %>!</h1>
+    <p class="lead">
+      Você está logado para aproveitar o melhor de nossa loja virtual!
+    </p>
+    <%= link_to "Sair", destroy_user_session_path, :method => :delete, :class => 'btn btn-large btn-danger' %>
+  <% else %>
+    <h1>Bem vindo, Visitante!</h1>
+    <p class="lead">
+      Efetue o cadastro para aproveitar as melhores ofertas de nossa loja!
+    </p>
+    <div class="row-fluid">
+      <div class="span6">
+        <%= link_to "Login", new_user_session_path, :class => "btn btn-success" %>
+      </div>
+      <div class="span6">
+        <%= link_to "Cadastre-se", new_user_registration_path, :class => "btn btn-success" %>
+      </div>
+    </div>
+  <% end %>
