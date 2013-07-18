@@ -6,7 +6,7 @@
   <div><%= f.label :email %>
   <%= f.email_field :email, :autofocus => true%></div>
 
-  <div><%= f.label :cep %><br />
+  <div><%= f.label :cep %>
   <%= f.text_field :cep, {"onblur" => "getEndereco()"}%></div>
 
   <div><%= f.label :logradouro %>
@@ -19,37 +19,17 @@
   <%= f.text_field :cidade%></div>
 
   <div><%= f.label :estado %>
-  <%= f.text_field :cidade%></div>
+  <%= f.text_field :uf%></div>
 
-  <div><%= f.label :password %>
+  <div><%= f.label :senha %>
   <%= f.password_field :password %></div>
 
-  <div><%= f.label :password_confirmation %>
+  <div><%= f.label :confirme_a_senha %>
   <%= f.password_field :password_confirmation %></div>
 
-  <div><%= f.submit "Cadastrar" %></div>
+  <div><%= f.submit "Cadastrar"%></div>
 <% end %>
 
 <%= render "devise/shared/links" %>
 
-<script>
-function getEndereco() {
-    if ($.trim($("#user_cep").val()) != "") {
-      $.getScript("http://cep.republicavirtual.com.br/web_cep.php?formato=javascript&cep="+$("#user_cep").val(), function(){
-      <!-- Atribuindo os valores para os componentes da página-->
-    if(resultadoCEP["resultado"]){
-        $("#user_logradouro").val(unescape(resultadoCEP["tipo_logradouro"]));
-        $("#user_logradouro").val(unescape(resultadoCEP["logradouro"]));
-        $("#user_bairro").val(unescape(resultadoCEP["bairro"]));
-        $("#user_cidade").val(unescape(resultadoCEP["cidade"]));
-        $("#user_uf").val(unescape(resultadoCEP["uf"]));
-        } else {
-          alert("Cep não encontrado.");
-       }
-       $("#lbcep").html(" CEP")});
-    }
-    else {
-        alert("Informe um cep.");
-    }
-}
-</script>
+<%= javascript_include_tag "getendereco" %>
