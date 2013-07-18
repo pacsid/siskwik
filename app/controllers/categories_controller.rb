@@ -1,6 +1,5 @@
 class CategoriesController < ApplicationController
-  # GET /categories
-  # GET /categories.json
+  before_filter :check_access, :only => [:new, :edit]
   def index
     @categories = Category.all
 
@@ -68,4 +67,9 @@ class CategoriesController < ApplicationController
       format.json { head :no_content }
     end
   end
+  protected
+  def check_access
+    redirect_to :action => 'index', :alert => 'Você não tem acesso!' and return unless current_user.try(:admin?)
+  end
+
 end

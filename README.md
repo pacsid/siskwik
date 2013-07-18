@@ -10,5 +10,5 @@ devise<br />
 <br />
 
 <h2> Descrição </h2>
-Cadastro de Usuarios<br />
+--> Cadastro de Usuarios<br />
 Categorias e Produtos<br />
