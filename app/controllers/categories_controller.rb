@@ -8,15 +8,6 @@ class CategoriesController < ApplicationController
     end
   end
 
-  def show
-    @category = Category.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @category }
-    end
-  end
-
   def new
     @category = Category.new
 
@@ -35,7 +26,7 @@ class CategoriesController < ApplicationController
 
     respond_to do |format|
       if @category.save
-        format.html { redirect_to @category, notice: 'Category was successfully created.' }
+        format.html { redirect_to :action => 'index', notice: 'Category was successfully created.' }
         format.json { render json: @category, status: :created, location: @category }
       else
         format.html { render action: "new" }
@@ -69,7 +60,7 @@ class CategoriesController < ApplicationController
   end
   protected
   def check_access
-    redirect_to :action => 'index', :alert => 'Você não tem acesso!' and return unless current_user.try(:admin?)
+    redirect_to :action => 'index', :alert => 'Voce nao tem acesso!' and return unless current_user.try(:admin?)
   end
 
 end
