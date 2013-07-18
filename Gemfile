@@ -5,6 +5,7 @@ gem 'devise'
 gem 'bootstrap-sass-rails'
 gem 'twitter-bootstrap-rails'
 gem 'less-rails'
+gem 'oauth2'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
