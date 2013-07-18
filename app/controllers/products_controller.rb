@@ -84,6 +84,6 @@ class ProductsController < ApplicationController
   end
   protected
   def check_access
-    redirect_to :action => 'index', :alert => 'Você não tem acesso!' and return unless current_user.try(:admin?)
+    redirect_to :action => 'index', :alert => 'Voce nao tem acesso!' and return unless current_user.try(:admin?)
   end
 end
